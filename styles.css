@@ -2053,6 +2053,10 @@ img {
 }
 
 @media (max-width: 768px) {
+    html {
+        scroll-padding-top: 65px !important;
+    }
+
     .section-padding {
         padding: 40px 0;
     }
@@ -2088,6 +2092,8 @@ img {
     
     .hero-stats {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
     }
     
     .hero-visual {
