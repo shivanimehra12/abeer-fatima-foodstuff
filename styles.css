@@ -132,7 +132,7 @@ img {
 }
 
 .section-padding {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 /* Utility Helper Classes */
@@ -757,7 +757,7 @@ img {
 /* Brand Partners Ticker Section */
 .brands-ticker-section {
     background-color: var(--white);
-    padding: 60px 0;
+    padding: 40px 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -2054,7 +2054,7 @@ img {
 
 @media (max-width: 768px) {
     .section-padding {
-        padding: 70px 0;
+        padding: 40px 0;
     }
     
     .grid-2 {
