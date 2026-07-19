@@ -2073,9 +2073,9 @@ img {
     }
     
     .hero-card-stack {
-        transform: scale(0.85);
+        transform: scale(0.70);
         transform-origin: top center;
-        margin: -20px auto -80px auto;
+        margin: -20px auto -100px auto;
     }
     
     .hero-section {
