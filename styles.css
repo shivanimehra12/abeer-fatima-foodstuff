@@ -1061,6 +1061,7 @@ img {
 /* Filter Controls */
 .filter-controls {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
     margin-top: 30px;
@@ -2063,6 +2064,12 @@ img {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 60px;
+        overflow: hidden;
+    }
+    
+    .hero-card-stack {
+        transform: scale(0.85);
+        margin: 0 auto;
     }
     
     .hero-content h1 {
@@ -2158,8 +2165,24 @@ img {
     }
     
     .hero-card-stack {
-        width: 250px;
-        height: 250px;
+        transform: scale(0.65);
+        transform-origin: center center;
+        margin: -40px auto 0 auto;
+    }
+    
+    .floating-item {
+        display: none; /* Hide floating text on mobile to prevent overlap/scroll */
+    }
+    
+    .inquiry-form {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        max-width: 100%;
     }
     
     .gold-jar {
