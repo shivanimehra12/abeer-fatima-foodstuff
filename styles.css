@@ -2093,12 +2093,24 @@ img {
     }
     
     .about-image-collage {
-        height: 380px;
+        height: auto;
+    }
+    
+    .collage-main-wrapper {
+        height: 350px;
     }
     
     .collage-sub-card {
-        width: 220px;
-        padding: 16px;
+        position: relative !important;
+        width: 100% !important;
+        margin-top: 15px;
+        bottom: 0 !important;
+        right: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .stat-bubble {
+        display: none !important;
     }
     
     .contact-card {
