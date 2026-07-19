@@ -585,9 +585,16 @@
         <span class="whatsapp-tooltip">Chat with Sales Desk</span>
     </a>
 
-    <!-- SmtpJS for Email integration -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- EmailJS for Email integration -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+              publicKey: "hQgQDYPa1YfRY-LTx",
+            });
+        })();
+    </script>
     <!-- Custom JS -->
-    <script src="app.js?v=1.1"></script>
+    <script src="app.js?v=2.2"></script>
 </body>
 </html>
