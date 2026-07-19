@@ -2073,13 +2073,24 @@ img {
     }
     
     .hero-card-stack {
-        transform: scale(0.60);
+        transform: scale(0.85);
         transform-origin: top center;
-        margin: -20px auto 0 auto;
+        margin: -20px auto -80px auto;
+    }
+    
+    .hero-section {
+        padding: 100px 0 20px 0;
+    }
+    
+    .hero-content .badge {
+        white-space: normal;
+        text-align: center;
+        height: auto;
+        padding: 10px 20px;
     }
     
     .hero-content h1 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
     }
     
     .hero-subtitle {
