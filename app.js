@@ -724,28 +724,28 @@ const init = () => {
             bodyContent += `<strong>${key.replace(/_/g, ' ').toUpperCase()}</strong>: ${value}<br/>`;
         }
 
-        // Check if SmtpJS loaded
-        if (typeof Email === 'undefined') {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-            showToast(
-                'Browser Cache Error', 
-                'Please perform a hard refresh (Ctrl+F5 or Cmd+Shift+R) to load the new email system, then try again.', 
-                false
-            );
-            return;
-        }
-
-        // Send Email via SmtpJS
-        Email.send({
+        // Use embedded SmtpJS logic via native fetch to bypass script loading and adblocker issues
+        const emailData = {
             Host: "smtp.gmail.com",
             Username: "abeerfatimaquries@gmail.com",
             Password: "kxgq vpkl dstj dylb",
             To: "thofikdxb@gmail.com, shivani.m@ibirdsservices.com",
             From: "abeerfatimaquries@gmail.com",
             Subject: "New Wholesale Inquiry - Abeer Fatima Foodstuff",
-            Body: bodyContent
-        }).then(message => {
+            Body: bodyContent,
+            Action: "Send",
+            nocache: Math.floor(1e6 * Math.random() + 1)
+        };
+
+        fetch("https://smtpjs.com/v3/smtpjs.aspx?", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded"
+            },
+            body: JSON.stringify(emailData)
+        })
+            .then(response => response.text())
+            .then(message => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
 
