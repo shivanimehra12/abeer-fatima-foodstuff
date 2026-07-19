@@ -724,51 +724,31 @@ const init = () => {
             bodyContent += `<strong>${key.replace(/_/g, ' ').toUpperCase()}</strong>: ${value}<br/>`;
         }
 
-        // Use FormSubmit for reliable, adblock-proof, and secure email sending
-        const payload = {
-            _subject: "New Wholesale Inquiry - Abeer Fatima Foodstuff",
-            _cc: "thofikdxb@gmail.com, shivani.m@ibirdsservices.com",
-            _template: "table",
-            Name: formData.get("name") || "N/A",
-            Email: formData.get("email") || "N/A",
-            Phone: formData.get("phone") || "N/A",
-            Company: formData.get("company") || "N/A",
-            Product_Interest: formData.get("product_interest") || formData.get("product_name") || "N/A",
-            Message_or_Volume: formData.get("message") || formData.get("volume") || "N/A"
+        const emailParams = {
+            name: formData.get("name") || "N/A",
+            email: formData.get("email") || "N/A",
+            phone: formData.get("phone") || "N/A",
+            company: formData.get("company") || "N/A",
+            product_interest: formData.get("product_interest") || formData.get("product_name") || "N/A",
+            message: formData.get("message") || formData.get("volume") || "N/A"
         };
 
-        fetch("https://formsubmit.co/ajax/abeerfatimaquries@gmail.com", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(payload)
-        })
-            .then(response => response.json())
-            .then(data => {
+        emailjs.send("service_q2zjq9c", "template_tjdk2ld", emailParams)
+            .then(function() {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-
-                if (data.success === "true" || data.success === true) {
-                    formElement.reset();
-                    if (isModal) {
-                        toggleModal(false);
-                    }
-                    showToast(
-                        'Quote Inquiry Received',
-                        'Thank you! We will contact you shortly.',
-                        true
-                    );
-                } else {
-                    // First time activation required
-                    showToast(
-                        'Action Required',
-                        'Please check the inbox for abeerfatimaquries@gmail.com to ACTIVATE the email form!',
-                        false
-                    );
+                
+                formElement.reset();
+                if (isModal) {
+                    toggleModal(false);
                 }
-            }).catch(err => {
+                showToast(
+                    'Quote Inquiry Received',
+                    'Thank you! We will contact you shortly.',
+                    true
+                );
+            }, function(error) {
+                console.error("EmailJS Error:", error);
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
                 showToast(
