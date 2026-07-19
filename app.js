@@ -724,32 +724,33 @@ const init = () => {
             bodyContent += `<strong>${key.replace(/_/g, ' ').toUpperCase()}</strong>: ${value}<br/>`;
         }
 
-        // Use embedded SmtpJS logic via native fetch to bypass script loading and adblocker issues
-        const emailData = {
-            Host: "smtp.gmail.com",
-            Username: "abeerfatimaquries@gmail.com",
-            Password: "kxgq vpkl dstj dylb",
-            To: "thofikdxb@gmail.com, shivani.m@ibirdsservices.com",
-            From: "abeerfatimaquries@gmail.com",
-            Subject: "New Wholesale Inquiry - Abeer Fatima Foodstuff",
-            Body: bodyContent,
-            Action: "Send",
-            nocache: Math.floor(1e6 * Math.random() + 1)
+        // Use FormSubmit for reliable, adblock-proof, and secure email sending
+        const payload = {
+            _subject: "New Wholesale Inquiry - Abeer Fatima Foodstuff",
+            _cc: "thofikdxb@gmail.com, shivani.m@ibirdsservices.com",
+            _template: "table",
+            Name: formData.get("name") || "N/A",
+            Email: formData.get("email") || "N/A",
+            Phone: formData.get("phone") || "N/A",
+            Company: formData.get("company") || "N/A",
+            Product_Interest: formData.get("product_interest") || formData.get("product_name") || "N/A",
+            Message_or_Volume: formData.get("message") || formData.get("volume") || "N/A"
         };
 
-        fetch("https://smtpjs.com/v3/smtpjs.aspx?", {
+        fetch("https://formsubmit.co/ajax/abeerfatimaquries@gmail.com", {
             method: "POST",
             headers: {
-                "Content-type": "application/x-www-form-urlencoded"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
-            body: JSON.stringify(emailData)
+            body: JSON.stringify(payload)
         })
-            .then(response => response.text())
-            .then(message => {
+            .then(response => response.json())
+            .then(data => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
 
-                if (message === "OK") {
+                if (data.success === "true" || data.success === true) {
                     formElement.reset();
                     if (isModal) {
                         toggleModal(false);
@@ -760,12 +761,12 @@ const init = () => {
                         true
                     );
                 } else {
+                    // First time activation required
                     showToast(
-                        'Error Sending Inquiry',
-                        'There was a problem processing your request. Please try again or contact us via WhatsApp.',
+                        'Action Required',
+                        'Please check the inbox for abeerfatimaquries@gmail.com to ACTIVATE the email form!',
                         false
                     );
-                    console.error("EmailJS Error:", message);
                 }
             }).catch(err => {
                 submitBtn.disabled = false;
