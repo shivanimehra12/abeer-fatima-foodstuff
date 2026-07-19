@@ -1,0 +1,256 @@
+/* Premium Light Luxury 3D Theme Override */
+
+:root {
+    /* Overriding colors to Light Luxury */
+    --primary: #0F5E36;          
+    --primary-light: #18864f;
+    --primary-dark: #07351D;     
+    --accent: #C3992C;           /* Slightly darker gold for light bg contrast */
+    --accent-hover: #D4AF37;
+    --dark: #0D110E;
+    --dark-bg: #FFFFFF;          /* Force backgrounds to be light */
+    --light-bg: #F4F7F5;         
+    --white: #ffffff;
+    --text-main: #2D3A32;        /* Dark text for light mode */
+    --text-muted: #5F7366;
+    --border: rgba(15, 94, 54, 0.15); /* Green-tinted borders */
+    
+    /* Enhanced Shadows for Light Theme */
+    --shadow-soft: 0 10px 30px rgba(7, 33, 20, 0.08);
+    --shadow-medium: 0 15px 40px rgba(7, 33, 20, 0.12);
+    --shadow-hard: 0 25px 50px rgba(7, 33, 20, 0.18);
+    --shadow-glow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-main);
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6, .logo-main, .ticker-title, .section-title {
+    color: var(--primary-dark);
+}
+.nav-link, .drawer-link { color: var(--text-main); }
+.nav-link:hover, .drawer-link:hover { color: var(--accent); }
+
+/* Header Glassmorphism (Light) */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(15, 94, 54, 0.05);
+}
+.main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(25px) saturate(1.5);
+    -webkit-backdrop-filter: blur(25px) saturate(1.5);
+    border-bottom: 1px solid rgba(15, 94, 54, 0.1);
+}
+
+/* Sections backgrounds */
+.brands-ticker-section, .about-section, .products-section, .why-us-section, .contact-section {
+    background-color: transparent;
+}
+.hero-section {
+    background: radial-gradient(circle at center, #FFFFFF 0%, #F4F7F5 100%);
+}
+.hero-bg-glow {
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(15, 94, 54, 0.05) 40%, transparent 80%);
+}
+
+/* 3D Hero Parallax Updates */
+.hero-container {
+    perspective: 1200px;
+}
+.hero-content {
+    transform-style: preserve-3d;
+}
+.hero-visual {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+.hero-card-stack {
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.visual-card-bg {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(244, 247, 245, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: var(--shadow-medium);
+}
+.floating-img {
+    background-color: var(--white);
+    border: 2px solid var(--white);
+    filter: drop-shadow(0 15px 25px rgba(7, 33, 20, 0.15));
+}
+.floating-img:hover {
+    border-color: var(--accent);
+    filter: drop-shadow(0 20px 35px rgba(212, 175, 55, 0.25));
+}
+
+/* Cards (About, Why Us, Contact) */
+.collage-sub-card, .why-card, .contact-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(15, 94, 54, 0.08);
+    box-shadow: var(--shadow-soft);
+}
+.why-card:hover {
+    background: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-10px) translateZ(20px);
+    box-shadow: var(--shadow-medium);
+}
+.why-us-grid {
+    perspective: 1000px;
+}
+.why-card {
+    transform-style: preserve-3d;
+}
+
+/* Product Grid 3D Overrides */
+.products-grid {
+    perspective: 1500px;
+}
+.product-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 94, 54, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 10px 25px rgba(7, 33, 20, 0.06);
+    aspect-ratio: auto; /* Remove the tall aspect ratio */
+    min-height: 320px;  /* Set a smaller reasonable height */
+}
+.product-card::before {
+    background: linear-gradient(135deg, var(--accent), var(--primary-light), var(--accent));
+}
+
+/* Product Info at Bottom */
+.product-info-bottom {
+    padding: 20px 24px;
+    background: var(--white);
+    border-radius: 0 0 16px 16px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.product-img-wrapper {
+    background: linear-gradient(180deg, #f8faf9 0%, #f0f4f1 100%);
+    border-radius: 16px 16px 0 0;
+    height: 180px; /* Constrain image height */
+    flex-shrink: 0;
+}
+.product-brand {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+.product-title-bottom {
+    color: var(--primary-dark);
+    font-size: 1.15rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    line-height: 1.3;
+}
+
+/* Form inputs */
+.form-group input, .form-group select, .form-group textarea {
+    background-color: #FAFCFA;
+    color: var(--text-main);
+    border: 1px solid rgba(15, 94, 54, 0.2);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    background-color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(15, 94, 54, 0.1);
+}
+
+/* Modals & Drawers */
+.mobile-drawer, .modal, .modal-content {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+}
+.drawer-link { color: var(--primary-dark); }
+.modal-header h3 { color: var(--primary-dark); }
+
+/* Waves */
+.hero-wave .shape-fill {
+    fill: var(--white);
+}
+
+/* Specific text color fixes */
+.lead-text { color: var(--primary); }
+.bullet-desc strong, .why-card h3, .info-text strong, .form-wrapper-card h3, .info-blocks h3 { color: var(--primary-dark); }
+.info-badge { 
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: var(--primary-dark); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(15, 94, 54, 0.15); 
+    box-shadow: 0 10px 25px rgba(7, 33, 20, 0.1);
+}
+
+/* Filter Buttons */
+.filter-btn {
+    background-color: var(--white);
+    color: var(--text-main);
+    border-color: var(--border);
+}
+
+/* 3D Animated Particles overlay */
+.particles-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.3;
+    animation: float-particle 15s infinite linear;
+}
+@keyframes float-particle {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-1000px) scale(1.5) rotate(360deg); opacity: 0; }
+}
+
+/* Product Overlay Darker (Contrast for Light theme) */
+.product-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(7, 33, 20, 0.2) 0%,
+        rgba(7, 33, 20, 0.85) 60%,
+        rgba(7, 33, 20, 0.95) 100%
+    );
+}
+
+/* Additional Button Glowing */
+.btn-primary {
+    box-shadow: 0 8px 20px rgba(15, 94, 54, 0.25);
+}
+.btn-primary:hover {
+    box-shadow: 0 12px 25px rgba(15, 94, 54, 0.4);
+}
+.btn-secondary {
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+}
+.btn-secondary:hover {
+    box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+}
